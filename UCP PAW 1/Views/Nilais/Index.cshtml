@@ -1,0 +1,66 @@
+﻿@model IEnumerable<UCP_PAW_1.Models.Nilai>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Data Nilai</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Jumlah Nilai
+            </th>
+            <th>
+                KKM
+            </th>
+            <th>
+                keterangan
+            </th>
+            <th>
+                Id Guru
+            </th>
+            <th>
+                Id Mapel
+            </th>
+            <th>
+                Id Siswa
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahNilai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kkm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Keterangan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGuruNavigation.IdGuru)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMapelNavigation.IdMapel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSiswaNavigation.IdSiswa)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdNilai"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.IdNilai"><i class="fas fa-list"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IdNilai"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

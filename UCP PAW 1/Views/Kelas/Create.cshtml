@@ -1,0 +1,43 @@
+﻿@model UCP_PAW_1.Models.Kela
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Kela</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdKelas" class="control-label"></label>
+                <input asp-for="IdKelas" class="form-control" />
+                <span asp-validation-for="IdKelas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamaKelas" class="control-label"></label>
+                <input asp-for="NamaKelas" class="form-control" />
+                <span asp-validation-for="NamaKelas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdMapel" class="control-label"></label>
+                <select asp-for="IdMapel" class ="form-control" asp-items="ViewBag.IdMapel"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

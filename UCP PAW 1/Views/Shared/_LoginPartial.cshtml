@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using UCP_PAW_1.Areas.Identity.Data
+
+@inject SignInManager<AuthUser> SignInManager
+@inject UserManager<AuthUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav flex-grow-1">
+
+        <!-- Dropdown Menu Nav -->
+        <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link text-dark" data-toggle="dropdown">Add Data Sekolah<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a class="text-dark" asp-area="Mapels" asp-controller="Mapels" asp-action="Index">Mapel</a></li>
+                <li><a class="text-dark" asp-area="Gurus" asp-controller="Gurus" asp-action="Index">Guru</a></li>
+                <li><a class="text-dark" asp-area="" asp-controller="Kelas" asp-action="Index">Kelas</a></li>
+                <li><a class="text-dark" asp-area="" asp-controller="Siswas" asp-action="Index">Siswa</a></li>
+            </ul>
+        </li>
+        <!-- Akhir Dropdown Menu Nav -->
+    </ul>
+
+    }
+else
+{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Admin Login</a>
+        </li>
+
+        <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link text-dark" data-toggle="dropdown">View Data User<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a class="text-dark" asp-area="" asp-controller="User" asp-action="Index">Guru Menu</a></li>
+                <li><a class="text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">Siswa Menu</a></li>
+            </ul>
+        </li>
+    </ul>
+
+}
+

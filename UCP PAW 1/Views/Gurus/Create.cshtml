@@ -1,0 +1,63 @@
+﻿@model UCP_PAW_1.Models.Guru
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Guru</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdGuru" class="control-label"></label>
+                <input asp-for="IdGuru" class="form-control" />
+                <span asp-validation-for="IdGuru" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nip" class="control-label"></label>
+                <input asp-for="Nip" class="form-control" />
+                <span asp-validation-for="Nip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamaGuru" class="control-label"></label>
+                <input asp-for="NamaGuru" class="form-control" />
+                <span asp-validation-for="NamaGuru" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlamatGuru" class="control-label"></label>
+                <input asp-for="AlamatGuru" class="form-control" />
+                <span asp-validation-for="AlamatGuru" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoHp" class="control-label"></label>
+                <input asp-for="NoHp" class="form-control" />
+                <span asp-validation-for="NoHp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdMapel" class="control-label"></label>
+                <select asp-for="IdMapel" class ="form-control" asp-items="ViewBag.IdMapel"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Keterangan" class="control-label"></label>
+                <input asp-for="Keterangan" class="form-control" />
+                <span asp-validation-for="Keterangan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
